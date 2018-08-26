@@ -1,0 +1,51 @@
+  [
+    {
+        "topic": "Opened",
+        "description": "Opened",
+        "references": [],
+        "arguments": [
+            {
+                "name": "eventId",
+                "type": "uint32",
+                "description": "sequence number for this event"
+            },
+            {
+                "name": "location",
+                "type": "uint16",
+                "description": "0 - A, 1 - B"
+            },
+            {
+                "name": "forced",
+                "type": "bool",
+                "description": "forced?"
+            },
+            {
+                "name": "timestamp",
+                "type": "uint32",
+                "description": "timestamp"
+            }
+        ]
+    },
+    {
+        "topic": "Closed",
+        "description": "Closed",
+        "references": [],
+        "arguments": [
+            {
+                "name": "eventId",
+                "type": "uint32",
+                "description": "sequence number for this event"
+            },
+            {
+                "name": "location",
+                "type": "uint16",
+                "description": "0 - A, 1 - B"
+            },
+            {
+                "name": "timestamp",
+                "type": "uint32",
+                "description": "timestamp"
+            }
+        ]
+    }
+]

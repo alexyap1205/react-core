@@ -1,0 +1,152 @@
+[
+    {
+        "topic": "initialise",
+        "diagrams": [
+            "Initialise.png"
+        ],
+        "description": "initialise",
+        "references": [],
+        "commandRequest": {
+            "parameters": [
+                {
+                    "name": "requestId",
+                    "type": "uint32",
+                    "description": "sequence number for this request"
+                },
+                {
+                    "name": "stage",
+                    "type": "uint16",
+                    "description": "0 - A, 1 - B"
+                }
+            ]
+        },
+        "commandResponse": {
+            "parameters": [
+                {
+                    "name": "requestId",
+                    "type": "uint32",
+                    "description": "correlation id to the original request"
+                },
+                {
+                    "name": "returnCode",
+                    "type": "int32",
+                    "description": "0 always"
+                }
+            ]
+        },
+        "actionEvents": [
+            {
+                "topic": "initialiseCompleted",
+                "arguments": [
+                    {
+                        "name": "stage",
+                        "type": "uint16",
+                        "description": "0 - A, 1 - B"
+                    },
+                    {
+                        "name": "requestId",
+                        "type": "uint32",
+                        "description": "correlation id to the original request"
+                    },
+                        {
+                        "name": "resultCode",
+                        "type": "int32",
+                        "description": "0 - success, otherwise - failed"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "topic": "scan",
+        "diagrams": [
+            "scan.png"
+        ],
+        "description": "Scan",
+        "references": [],
+        "commandRequest": {
+            "parameters": [
+                {
+                    "name": "requestId",
+                    "type": "uint32",
+                    "description": "sequence number for this request"
+                },
+                {
+                    "name": "location",
+                    "type": "uint16",
+                    "description": "0 - A, 1 - B, 2 - C"
+                }
+            ]
+        },
+        "commandResponse": {
+            "parameters": [
+                {
+                    "name": "requestId",
+                    "type": "uint32",
+                    "description": "correlation id to the original request"
+                },
+                {
+                    "name": "returnCode",
+                    "type": "int32",
+                    "description": "0 always"
+                }
+            ]
+        },
+        "actionEvents": [
+            {
+                "topic": "ScanCompleted",
+                "arguments": [
+                    {
+                        "name": "requestId",
+                        "type": "uint32",
+                        "description": "correlation id to the original request"
+                    },
+                    {
+                        "name": "resultCode",
+                        "type": "int32",
+                        "description": "0 - success, 65535 - unknown error"
+                    },
+                    {
+                        "name": "scanResults",
+                        "type": "ScanResult[]",
+                        "description": "ScanResult array",
+                        "payloadSample": {
+                            "code": "a",
+                            "status": 1,
+                            "pos": 6,
+                            "id": "ABCDE",
+                            "pic": "###base64String###"
+                        },
+                        "payloadFields": [
+                            {
+                                "name": "code",
+                                "type": "char",
+                                "description": "Unknown = '0', Abc = 'a'"
+                            },
+                            {
+                                "name": "status",
+                                "type": "int32",
+                                "description": "Error = 0, Success = 1, Unknown = 2"
+                            },
+                            {
+                                "name": "pos",
+                                "type": "int32",
+                                "description": "Position based on index 0"
+                            },
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "id"
+                            },
+                            {
+                                "name": "pic",
+                                "type": "string",
+                                "description": "base64String as encoded from byte array"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
